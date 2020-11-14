@@ -54,6 +54,33 @@ class Lead_model extends CI_Model
     return  $insert_id;
   }
 
+  public function obtenerDatosLeads($leadId)
+  {
+    $this->db->select('campo, valor');
+    $this->db->from('datos');
+    $this->db->where('id_lead', $leadId);
+    $query = $this->db->get();
+    return $query->result_array();
+  }
+
+  public function obtenerLeads($proyectoId)
+  {
+
+    $query = $this->db->get_where('leads', array('id_proyecto' => $proyectoId));
+    $leads = $query->result_array();
+    $i = 0;
+    foreach ($leads as $value) {
+      $campos = $this->obtenerDatosLeads($value['id']);
+      $datos = array();
+      foreach ($campos as $value) {
+        $datos[$value['campo']] = $value['valor'];
+      }
+      $leads[$i]['datos'] = $datos;
+      $i += 1;
+    }
+    return $leads;
+  }
+
   // ------------------------------------------------------------------------
 
 }

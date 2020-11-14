@@ -51,9 +51,21 @@ class LeadController extends RestController
     );
   }
 
-  public function obtenerLeads_get()
+  public function obtenerLeads_get($clave)
   {
-    $proyecto = $this->input->get();
+
+    $result =  $this->validarProyecto($clave);
+    if (empty($result)) {
+      $this->respuesta['error'] =  true;
+      $this->respuesta['mensaje'] = 'No exite el proyecto';
+      $this->response($this->respuesta, 400);
+      die;
+    }
+
+    $proyectoId = $result[0]['id'];
+    $leads = $this->Lead_model->obtenerLeads($proyectoId);
+
+    $this->response($leads, 200);
   }
 
   private function validarDatosLead($lead)
