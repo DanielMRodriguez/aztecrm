@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------------
@@ -49,6 +49,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+//Dashboard
+$route['default_controller'] = 'LoginController';
+$route['login'] = 'web/LoginController/login';
+$route['home'] = 'web/InicioController';
+
+$route['clientes'] = 'web/ClientesController';
+$route['clientes/nuevo']['GET'] = 'web/ClientesController/nuevo';
+$route['clientes/nuevo']['POST'] = 'web/ClientesController/guardar';
+
+$route['proyectos'] = 'web/ProyectoController';
+$route['proyectos/nuevo/(:any)']['GET'] = 'web/ProyectoController/nuevo/$1';
+$route['proyectos/nuevo']['POST'] = 'web/ProyectoController/guardar';
+
+$route['leads']['GET'] = 'web/LeadsController';
+
+
+
+
+// API
+
+$route['api/lead']['POST'] = 'api/LeadController/newLead';
+$route['api/lead/all/(:any)']['GET'] = 'api/LeadController/obtenerLeads/$1';
+
+$route['api/proyectos/(:any)']['GET'] = 'api/ProyectoController/obtenerProyectos/$1';
