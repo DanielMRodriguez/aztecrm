@@ -4,7 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
  *
- * Controller ClientesController
+ * Controller LeadsController
  *
  * This controller for ...
  *
@@ -18,25 +18,26 @@ defined('BASEPATH') or exit('No direct script access allowed');
  *
  */
 
-class ClientesController extends CI_Controller
+class LeadsController extends CI_Controller
 {
 
   public function __construct()
   {
     parent::__construct();
     $this->load->model('Cliente_model');
+    $this->load->model('Proyecto_model');
   }
 
   public function index()
   {
-
     $data['clientes'] = $this->Cliente_model->obtenerClientes();
-    $this->load->view('layout/header');
-    $this->load->view('clientes/inicio', $data);
-    $this->load->view('layout/footer');
+    $data['ubicacion'] = "leads";
+    $this->load->view('layout/header', $data);
+    $this->load->view('leads/inicio', $data);
+    $this->load->view('layout/footer', $data);
   }
 }
 
 
-/* End of file ClientesController.php */
-/* Location: ./application/controllers/ClientesController.php */
+/* End of file LeadsController.php */
+/* Location: ./application/controllers/LeadsController.php */

@@ -40,10 +40,11 @@
                                      <td><?= $cliente['nombre']; ?></td>
                                      <td><?= $cliente['clave']; ?></td>
                                      <td class="td-actions text-center">
-                                         <button type="button" rel="tooltip" class="btn btn-success"
-                                             data-toggle="tooltip" data-placement="top" title="Crear proyecto">
+                                         <a href="<?php echo base_url("proyectos/nuevo/$cliente[id]"); ?>" type="button"
+                                             rel="tooltip" class="btn btn-success" data-toggle="tooltip"
+                                             data-placement="top" title="Crear proyecto">
                                              <i class="material-icons">add</i>
-                                         </button>
+                                         </a>
                                          <button type="button" rel="tooltip" class="btn btn-info" data-toggle="tooltip"
                                              data-placement="top" title="Editar">
                                              <i class="material-icons">edit</i>

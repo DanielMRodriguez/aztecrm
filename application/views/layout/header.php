@@ -1,3 +1,14 @@
+<?php
+
+function isActive($page, $ubicacion)
+{
+
+    if ($ubicacion == $page) {
+        echo 'active';
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +30,61 @@
     <link href="<?php echo base_url(); ?>assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/demo/demo.css" rel="stylesheet" />
+
+    <style>
+    label.error {
+        color: red
+    }
+
+    .loading__wraper {
+        position: absolute;
+        z-index: 500;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(100, 100, 100, .5);
+        display: none;
+    }
+
+    .lds-dual-ring {
+        display: inline-block;
+        width: 80px;
+        height: 80px;
+    }
+
+    .lds-dual-ring:after {
+        content: " ";
+        display: block;
+        width: 64px;
+        height: 64px;
+        margin: 8px;
+        border-radius: 50%;
+        border: 6px solid #fff;
+        border-color: #fff transparent #fff transparent;
+        animation: lds-dual-ring 1.2s linear infinite;
+    }
+
+    .tabla-container-hide,
+    #form-selectProyectos {
+        display: none;
+    }
+
+    @keyframes lds-dual-ring {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+    </style>
 </head>
+
 
 <body class="">
     <div class="wrapper ">
@@ -29,60 +94,50 @@
                 </a></div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
-                    <li class="nav-item ">
-                        <a class="nav-link" href="./dashboard.html">
+                    <li class="nav-item <?= isActive('home', $ubicacion); ?>">
+                        <a class="nav-link" href="<?= base_url('home'); ?>">
                             <i class="material-icons">dashboard</i>
                             <p>Dashboard</p>
                         </a>
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="<?= base_url('clientes'); ?>">
+                    <li class="nav-item <?= isActive('clientes', $ubicacion); ?>">
+                        <a class="nav-link" href="<?php echo base_url('clientes'); ?>">
                             <i class="material-icons">folder_shared</i>
                             <p>Clientes</p>
                         </a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="<?= base_url('proyectos'); ?>">
+                    <li class="nav-item <?php isActive('proyectos', $ubicacion); ?>">
+                        <a class="nav-link" href="<?php echo base_url('proyectos'); ?>">
                             <i class="material-icons">business_center</i>
                             <p>Proyectos</p>
                         </a>
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="./typography.html">
-                            <i class="material-icons">library_books</i>
-                            <p>Typography</p>
+                    <li class="nav-item <?php isActive('leads', $ubicacion); ?>">
+                        <a class="nav-link" href="<?php echo base_url('leads'); ?>">
+                            <i class="material-icons">contacts</i>
+                            <p>Leads</p>
                         </a>
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="./icons.html">
-                            <i class="material-icons">bubble_chart</i>
-                            <p>Icons</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="./map.html">
-                            <i class="material-icons">location_ons</i>
-                            <p>Maps</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="./notifications.html">
+
+                    <li class="nav-item <?php isActive('notificaciones', $ubicacion); ?>">
+                        <a class="nav-link" href="<?php echo base_url('notificaciones'); ?>">
                             <i class="material-icons">notifications</i>
-                            <p>Notifications</p>
+                            <p>Notificaciones</p>
                         </a>
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="./rtl.html">
-                            <i class="material-icons">language</i>
-                            <p>RTL Support</p>
+                    <li class="nav-item <?php isActive('contactos', $ubicacion); ?>">
+                        <a class="nav-link" href="<?php echo base_url('notificaciones'); ?>">
+                            <i class="material-icons">contact_mail</i>
+                            <p>Contactos</p>
                         </a>
                     </li>
-                    <li class="nav-item active-pro ">
-                        <a class="nav-link" href="./upgrade.html">
-                            <i class="material-icons">unarchive</i>
-                            <p>Upgrade to PRO</p>
+                    <li class="nav-item <?php isActive('perfil', $ubicacion); ?>">
+                        <a class="nav-link" href="<?php echo base_url('notificaciones'); ?>">
+                            <i class="material-icons"> account_circle</i>
+                            <p>Perfil</p>
                         </a>
                     </li>
+
                 </ul>
             </div>
         </div>

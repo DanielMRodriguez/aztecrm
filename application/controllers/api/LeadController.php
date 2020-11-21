@@ -25,8 +25,8 @@ class LeadController extends RestController
 
   public function newLead_post()
   {
-    $newLead = $this->input->post();
-
+    $newLead = $this->input->post('nombre');
+    $this->response($this->input->post('nombre'), 200);
     if (empty($newLead)) {
       $this->response(['error' => true, 'mensaje' => 'Debes enviar los datos de contacto'], 400);
     }

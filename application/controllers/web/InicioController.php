@@ -12,9 +12,10 @@ class InicioController extends CI_Controller
 
   public function index()
   {
-    $this->load->view('layout/header');
-    $this->load->view('inicio/inicio');
-    $this->load->view('layout/footer');
+    $data['ubicacion'] = 'home';
+    $this->load->view('layout/header', $data);
+    $this->load->view('inicio/inicio', $data);
+    $this->load->view('layout/footer', $data);
   }
 }
 

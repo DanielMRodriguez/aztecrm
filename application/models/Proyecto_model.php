@@ -57,6 +57,27 @@ class Proyecto_model extends CI_Model
     return $id[0]['id'];
   }
 
+  public function obtenerProyectos($idCliente)
+  {
+    $query = $this->db->get_where('proyectos', array('cliente_id' => $idCliente));
+    return $query->result_array();
+  }
+
+  public function crearProyecto($datos)
+  {
+    $datos['status'] = 1;
+    $datos['created_at'] = $datos['updated_at'] = date('Y-m-d H:i:s');
+
+    if ($this->db->insert('proyectos', $datos)) {
+      $query = $this->db->query('SELECT LAST_INSERT_ID()');
+      $row = $query->row_array();
+      $LastIdInserted = $row['LAST_INSERT_ID()'];
+      return $LastIdInserted;
+    } else {
+      return $this->db->error();
+    }
+  }
+
   // ------------------------------------------------------------------------
 
 }

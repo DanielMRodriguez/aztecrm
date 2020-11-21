@@ -54,17 +54,25 @@ $route['translate_uri_dashes'] = FALSE;
 
 //Dashboard
 $route['default_controller'] = 'LoginController';
-$route['login'] = 'LoginController/login';
+$route['login'] = 'web/LoginController/login';
+$route['home'] = 'web/InicioController';
 
-$route['home'] = 'InicioController';
+$route['clientes'] = 'web/ClientesController';
+$route['clientes/nuevo']['GET'] = 'web/ClientesController/nuevo';
+$route['clientes/nuevo']['POST'] = 'web/ClientesController/guardar';
 
-$route['clientes'] = 'ClientesController';
+$route['proyectos'] = 'web/ProyectoController';
+$route['proyectos/nuevo/(:any)']['GET'] = 'web/ProyectoController/nuevo/$1';
+$route['proyectos/nuevo']['POST'] = 'web/ProyectoController/guardar';
 
-$route['proyectos'] = 'ProyectoController';
+$route['leads']['GET'] = 'web/LeadsController';
+
 
 
 
 // API
 
-$route['api/lead']['POST'] = 'LeadController/newLead';
-$route['api/lead/all/(:any)']['GET'] = 'LeadController/obtenerLeads/$1';
+$route['api/lead']['POST'] = 'api/LeadController/newLead';
+$route['api/lead/all/(:any)']['GET'] = 'api/LeadController/obtenerLeads/$1';
+
+$route['api/proyectos/(:any)']['GET'] = 'api/ProyectoController/obtenerProyectos/$1';
