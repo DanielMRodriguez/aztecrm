@@ -53,10 +53,9 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 //Dashboard
-$route['default_controller'] = 'LoginController';
+$route['default_controller'] = 'web/LoginController/login';
 $route['login'] = 'web/LoginController/login';
 $route['home'] = 'web/InicioController';
-
 $route['clientes'] = 'web/ClientesController';
 $route['clientes/nuevo']['GET'] = 'web/ClientesController/nuevo';
 $route['clientes/nuevo']['POST'] = 'web/ClientesController/guardar';

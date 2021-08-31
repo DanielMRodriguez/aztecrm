@@ -24,7 +24,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 |
 */
 // develop
-$config['base_url'] = 'http://localhost/aztecrm/';
+$config['base_url'] = 'http://' . $_SERVER['BASE_URL'];
 
 /*
 |--------------------------------------------------------------------------

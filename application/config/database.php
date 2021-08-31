@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'crm_db',
+	'hostname' => $_SERVER['DB_HOST'],
+	'username' => $_SERVER['DB_USER'],
+	'password' => $_SERVER['DB_PASSWORD'],
+	'database' => $_SERVER['DB_NAME'],
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

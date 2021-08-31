@@ -292,4 +292,8 @@ if (is_dir('vendor')) {
 	require_once FCPATH . 'vendor/autoload.php';
 }
 
+//cargar variables de entorno
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
 require_once BASEPATH . 'core/CodeIgniter.php';
